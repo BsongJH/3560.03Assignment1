@@ -1,37 +1,24 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class MultipleChoice implements Question
+public class MultipleChoice extends Question
 {
-    @Override
-    public String answerReturn(int submittedAnswer)
+    public MultipleChoice(String newQuestion, List<String> newAnsChoice)
     {
-        String letters;
-        if (submittedAnswer < 1 || submittedAnswer > 4)
-        {
-            letters = "no answer";
-            return letters;
-        }
-        switch (submittedAnswer)
-        {
-            case 1 -> letters = "A";
-            case 2 -> letters = "B";
-            case 3 -> letters = "C";
-            case 4 -> letters = "D";
-            default -> throw new IllegalStateException("Invalid option occurred try again");
-        }
-        return letters;
+        super(newQuestion, newAnsChoice);
     }
-    public List<String> checkSubmits(List<Integer> submits)
+    public List<String> checkSubmits(List<Integer> intSubmits)
     {
-        List<String> letterAns = new ArrayList<>();
-        for(int item : submits)
+        List<String> stringAns = new ArrayList<>();
+        for(int item : intSubmits)
         {
-            if(!letterAns.contains(answerReturn(item)))
-                letterAns.add(answerReturn(item));
+            if(!stringAns.contains(ansChoice.get(item)))
+                stringAns.add(ansChoice.get(item));
+            else
+                stringAns.add("no answer");
         }
-        if(submits.isEmpty())
-            letterAns.add("no answer");
-        return letterAns;
+        if(intSubmits.isEmpty())
+            stringAns.add("no answer");
+        return stringAns;
     }
 }

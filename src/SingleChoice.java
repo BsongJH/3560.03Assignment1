@@ -1,40 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class SingleChoice implements Question
+public class SingleChoice extends Question
 {
-    @Override
-    public String answerReturn(int submittedAnswer)
+    public SingleChoice(String newQuestion, List<String> newAnsChoice)
     {
-        String shortAnswer;
-        /*
-        if (submittedAnswer < 1 && submittedAnswer > 2)
-        {
-            shortAnswer = "no answer";
-            return shortAnswer;
-        }
-         */
-        switch (submittedAnswer)
-        {
-            case 0 -> shortAnswer = "no answer";
-            case 1 -> shortAnswer = "1. Right";
-            case 2 -> shortAnswer = "2. Wrong";
-            default -> throw new IllegalStateException("Invalid option occurred try again");
-        }
-        return shortAnswer;
+        super(newQuestion,newAnsChoice);
     }
     public List<String> checkSubmits(List<Integer> submits)
     {
         List<String> letterAns = new ArrayList<>();
+        if (submits.get(0) == 2 || submits.isEmpty())
+        {
+            letterAns.add("no answer");
+            return letterAns;
+        }
         for(int item : submits)
         {
-            if(!letterAns.contains(answerReturn(item)))
+            if(!letterAns.contains(ansChoice.get(item)))
             {
-                letterAns.add(answerReturn(item));
+                letterAns.add(ansChoice.get(item));
             }
         }
-        if(submits.isEmpty())
-            letterAns.add("no answer");
         return letterAns;
     }
 }

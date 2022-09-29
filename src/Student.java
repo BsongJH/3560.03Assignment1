@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 
 public class Student
@@ -7,18 +6,19 @@ public class Student
     private final String studentID;
     private List<String> answers;
 
-    public Student()
+    public Student(List<String> answers)
     {
         studentCount++;
         this.studentID = "Student" + studentCount;
-        this.answers = new ArrayList<>();
+        this.answers = answers;
+        //this.answers = new ArrayList<>();
     }
 
     public String getStudentID()
     {
         return this.studentID;
     }
-
+    // for resubmission purposes
     public void setAnswers(List<String> newAnswers)
     {
         this.answers = newAnswers;

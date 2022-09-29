@@ -3,56 +3,62 @@ import java.util.Map;
 
 public class VotingService
 {
-    private final String question;
-    private int[] counts = {0,0,0,0,0};
+    private String question;
+    private int[] counts;
     private Map<String,List<String>> stuAnsMap;
 
-    // False -  Single - choice
     public VotingService(String question, Map<String,
             List<String>> stuAnsMap)
     {
         this.question = question;
-        // True - Multiple - choice
         this.stuAnsMap = stuAnsMap;
     }
-    public void collectSubmissions()
+    public void collectSubmissions(List<String> ansChoice)
     {
+        counts = new int[ansChoice.size() + 1];
         for (Map.Entry<String, List<String>> entry : stuAnsMap.entrySet())
         {
             for(String collect : entry.getValue())
             {
-                switch (collect)
+                if (collect == "no answer")
                 {
-                    case "A" -> this.counts[0]++;
-                    case "B" -> this.counts[1]++;
-                    case "C" -> this.counts[2]++;
-                    case "D" -> this.counts[3]++;
-                    case "1. Right" -> this.counts[0]++;
-                    case "2. Wrong" -> this.counts[1]++;
-                    case "no answer" -> this.counts[4]++;
+                    counts[ansChoice.size()]++;
+                    continue;
+                }
+                for(int i = 0; i < ansChoice.size(); i++)
+                {
+                    if (collect == ansChoice.get(i))
+                    {
+                        counts[i]++;
+                    }
                 }
             }
         }
     }
-    public void dispQuestion()
-    {
-        System.out.println(this.question);
-    }
-    public void dispCollected(boolean questionType)
+    public void dispCollected(boolean questionType, List<String> ansChoice)
     {
         if (questionType)
         {
-            System.out.println("A: " + counts[0]);
-            System.out.println("B: " + counts[1]);
-            System.out.println("C: " + counts[2]);
-            System.out.println("D: " + counts[3]);
-            System.out.println("No Submits: " + counts[4]);
+            System.out.println("****************************");
+            System.out.println("* " + question + " *");
+            System.out.println("****************************");
+            for (int i = 0; i < ansChoice.size(); i++)
+            {
+                System.out.println(ansChoice.get(i) + ": " + counts[i]);
+            }
+            System.out.println("No Submits: " + counts[ansChoice.size()]);
+            System.out.println();
         }
         else
         {
-            System.out.println("A: " + counts[0]);
-            System.out.println("B: " + counts[1]);
-            System.out.println("No Submits: " + counts[4]);
+            System.out.println("****************************");
+            System.out.println("* " + question + " *");
+            System.out.println("****************************");
+            for (int i = 0; i < ansChoice.size(); i++)
+            {
+                System.out.println(ansChoice.get(i) + ": " + counts[i]);
+            }
+            System.out.println("No Submits: " + counts[ansChoice.size()]);
         }
     }
 }
