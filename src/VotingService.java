@@ -1,5 +1,6 @@
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class VotingService
 {
@@ -22,14 +23,14 @@ public class VotingService
         {
             for(String collect : entry.getValue()) // Iterating Through The Values.
             {
-                if (collect == "no answer")
+                if (Objects.equals(collect, "no answer"))
                 {
                     counts[ansChoice.size()]++; // Increases the very last variable for non submission.
                     continue;
                 }
                 for(int i = 0; i < ansChoice.size(); i++) // Iterating through the answers
                 {
-                    if (collect == ansChoice.get(i))
+                    if (Objects.equals(collect, ansChoice.get(i)))
                     {
                         counts[i]++;  // Increases the submissions according to the size of the user's answer choices
                     }
