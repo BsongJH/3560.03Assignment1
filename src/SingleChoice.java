@@ -10,7 +10,7 @@ public class SingleChoice extends Question
     public List<String> checkSubmits(List<Integer> submits)
     {
         List<String> letterAns = new ArrayList<>();
-        if (submits.get(0) == 2 || submits.isEmpty())
+        if (submits.get(0) == ansChoice.size() || submits.isEmpty())
         {
             letterAns.add("no answer");
             return letterAns;

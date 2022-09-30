@@ -18,7 +18,6 @@ public class Student
     {
         return this.studentID;
     }
-    // for resubmission purposes
     public void setAnswers(List<String> newAnswers)
     {
         this.answers = newAnswers;

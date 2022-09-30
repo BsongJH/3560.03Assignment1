@@ -59,6 +59,12 @@ public class VotingService
                 System.out.println(ansChoice.get(i) + ": " + counts[i]);
             }
             System.out.println("No Submits: " + counts[ansChoice.size()]);
+            System.out.println();
         }
+    }
+
+    public void resubmission(String stuNum, List<String> newSubmissions)
+    {
+        stuAnsMap.replace(stuNum, newSubmissions);
     }
 }
