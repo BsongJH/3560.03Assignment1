@@ -11,7 +11,6 @@ public class Student
         studentCount++;
         this.studentID = "Student" + studentCount;
         this.answers = answers;
-        //this.answers = new ArrayList<>();
     }
 
     public String getStudentID()

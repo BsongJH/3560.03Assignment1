@@ -1,5 +1,10 @@
 import java.util.List;
 
+/*
+ * Abstract Class for the Questions being Single or Multiple
+ * question stores Question, and ansChoice stores The list of possible
+ * answers that user have chosen.
+ */
 public abstract class Question
 {
     protected String question;
@@ -10,6 +15,7 @@ public abstract class Question
         this.question = newQuestion;
         this.ansChoice = newAnsChoice;
     }
+    /* Turns Integer answers into String according to the ansChoice */
     public abstract List<String> checkSubmits(List<Integer> submits);
     public List<String> getAnsChoice()
     {

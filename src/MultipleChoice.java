@@ -7,6 +7,8 @@ public class MultipleChoice extends Question
     {
         super(newQuestion, newAnsChoice);
     }
+
+    /* Returns integer List into String List and if it's empty its considered as no answer. */
     public List<String> checkSubmits(List<Integer> intSubmits)
     {
         List<String> stringAns = new ArrayList<>();

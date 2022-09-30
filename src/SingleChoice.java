@@ -7,15 +7,20 @@ public class SingleChoice extends Question
     {
         super(newQuestion,newAnsChoice);
     }
-    public List<String> checkSubmits(List<Integer> submits)
+
+    /*
+    * Returns integer List into String List and if it's empty its considered as no answer.
+    * Integer List size will be 1 greater than the answer choice to simulate the no submission
+    */
+    public List<String> checkSubmits(List<Integer> newSubmits)
     {
         List<String> letterAns = new ArrayList<>();
-        if (submits.get(0) == ansChoice.size() || submits.isEmpty())
+        if (newSubmits.get(0) == ansChoice.size() || newSubmits.isEmpty())
         {
             letterAns.add("no answer");
             return letterAns;
         }
-        for(int item : submits)
+        for(int item : newSubmits)
         {
             if(!letterAns.contains(ansChoice.get(item)))
             {
