@@ -1,7 +1,11 @@
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-
+/*
+ * VotingService stores the map of the key: studentID and value: List of String answers
+ * into stuAnsMap. Question stores the user input question,
+ * counts array collects the number of answers that has been submitted to display the result
+ */
 public class VotingService
 {
     private String question;

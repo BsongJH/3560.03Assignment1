@@ -1,5 +1,9 @@
 import java.util.List;
-
+/*
+ * Student has its own String of Student ID and number combined the numbers
+ * are counted by the static field. Each student has a List of answers that they
+ * can submit and resubmit
+ */
 public class Student
 {
     private static int studentCount;

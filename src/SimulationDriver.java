@@ -133,6 +133,7 @@ public class SimulationDriver
         }
         else
         {
+            // bound + 1 to have one more space for non answers.
             submissions.add(random.nextInt(numOfChoice + 1));
         }
         return submissions;
